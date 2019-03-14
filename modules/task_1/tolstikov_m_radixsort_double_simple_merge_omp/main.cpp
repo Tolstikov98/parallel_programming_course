@@ -9,7 +9,7 @@
 #include <math.h>
 #include <cstring>
 #include <climits>
-
+
 void CountingSort(double *inp, double *out, int byteNum, int size) {
 	unsigned char *mas = (unsigned char *)inp;
 	int counter[256];
