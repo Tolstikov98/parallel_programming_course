@@ -63,29 +63,27 @@ void PrintArray(double *array, int size) {
     }
 }
 
-void GenerateArray(double *mas, int size, unsigned int seed) {
+void GenerateArray(double *mas, int size) {
     int b = 100;
     int a = 0;
     std::srand(seed);
     for (int i = 0; i < size; i++) {
-        mas[i] = static_cast<double>(rand_r(seed))*(b - a + 1) / RAND_MAX + a;
+        mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
     }
 }
 
 int main(int argc, char *argv[]) {
     double time_sort = 0;
     int size = 9;
-    unsigned int seed = 0;
     std::srand((unsigned)time(NULL));
     double *mas;
-    if (argc == 4)
+    if (argc == 3)
         if (strcmp(argv[1], "-size") == 0) {
             size = atoi(argv[2]);
-            seed = atoi(argv[3]);
         }
     mas = new double[size];
 
-    GenerateArray(mas, size, seed);
+    GenerateArray(mas, size);
     PrintArray(mas, size);
     time_sort = clock();
     LSDSortDouble(mas, size);
