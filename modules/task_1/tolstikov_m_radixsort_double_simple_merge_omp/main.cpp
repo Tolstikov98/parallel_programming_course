@@ -76,7 +76,11 @@ void GenerateArray(double *mas, int size) {
     int b = 100;
     int a = 0;
     for (int i = 0; i < size; i++) {
+<<<<<<< HEAD
         mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
+=======
+        mas[i] = static_cast<double>(rand_r())*(b - a + 1) / RAND_MAX + a;
+>>>>>>> fix styles code
     }
 }
 
