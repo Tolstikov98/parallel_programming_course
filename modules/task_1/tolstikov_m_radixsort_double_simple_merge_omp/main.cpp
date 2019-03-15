@@ -39,6 +39,7 @@ void LSDSortDouble(double *inp, int size) {
     double *out = new double[size];
     for (int i = 0; i < 8; i += 2) {
         CountingSort(inp, out, i, size);
+<<<<<<< HEAD
         CountingSort(out, inp, i + 1, size);
     }
     delete[] out;
@@ -49,6 +50,9 @@ void MSDSortDouble(double *inp, int size) {
     for (int i = 7; i >= 0; i -= 2) {
         CountingSort(inp, out, i, size);
         CountingSort(out, inp, i - 1, size);
+=======
+        CountingSort(out, inp, i+1, size);
+>>>>>>> 13273bfde8666a21073fc095cee8e648a51724a3
     }
     delete[] out;
 }
@@ -88,6 +92,7 @@ void GenerateArray(double *mas, int size) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
 =======
         mas[i] = static_cast<double>(rand_r())*(b - a + 1) / RAND_MAX + a;
@@ -98,6 +103,9 @@ void GenerateArray(double *mas, int size) {
 =======
         mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
 >>>>>>> fix Travis
+=======
+        mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
+>>>>>>> 13273bfde8666a21073fc095cee8e648a51724a3
     }
 }
 
@@ -107,6 +115,7 @@ void CopyArray(double *mas, int size, double *tmpmas) {
 }
 
 int main(int argc, char *argv[]) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     double time_lsd = 0;
@@ -123,11 +132,14 @@ int main(int argc, char *argv[]) {
 =======
     double *mas;
 =======
+=======
+>>>>>>> 13273bfde8666a21073fc095cee8e648a51724a3
     double time_lsd = 0;
     double time_msd = 0;
     int size = 9;
     std::srand((unsigned)time(NULL));
     double *mas, *tmpmas;
+<<<<<<< HEAD
 >>>>>>> add MSD Sort
     if (argc == 3)
 <<<<<<< HEAD
@@ -165,6 +177,12 @@ int main(int argc, char *argv[]) {
     MSDSortDouble(tmpmas, size);
     time_msd = (clock() - time_msd) / static_cast<double>(CLOCKS_PER_SEC);
 =======
+=======
+    if (argc == 3)
+        if (strcmp(argv[1], "-size") == 0)
+            size = atoi(argv[2]);
+    mas = new double[size];
+>>>>>>> 13273bfde8666a21073fc095cee8e648a51724a3
     tmpmas = new double[size];
     GenerateArray(mas, size);
 
@@ -181,7 +199,10 @@ int main(int argc, char *argv[]) {
     time_msd = clock();
     MSDSortDouble(tmpmas, size);
     time_msd = (clock() - time_sort) / static_cast<double>(CLOCKS_PER_SEC);
+<<<<<<< HEAD
 >>>>>>> add MSD Sort
+=======
+>>>>>>> 13273bfde8666a21073fc095cee8e648a51724a3
     PrintArray(mas, size);
     PrintArray(tmpmas, size);
     std::cout << "LSD ";
