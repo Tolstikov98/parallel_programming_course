@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include <Windows.h>
 #include <iostream>
 #include <ctime>
 #include <algorithm>
@@ -74,7 +73,7 @@ void GenerateArray(double *mas, int size) {
 
 int main(int argc, char *argv[]) {
     double time_sort = 0;
-    int size = 0;
+    int size = 9;
     std::srand((unsigned)time(NULL));
     double *mas;
     if (argc == 3)
