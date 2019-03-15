@@ -1,5 +1,5 @@
 // Copyright 2019 Tolstikov Maksim
-//RadixSort with simple merge (double)
+// RadixSort with simple merge (double)
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -67,8 +67,8 @@ void PrintArray(double *array, int size) {
 void GenerateArray(double *mas, int size) {
     int b = 100;
     int a = 0;
-    for (int i = 0; i < size; i++){
-        mas[i] = static_cast<double>(rand())*(b - a + 1) / RAND_MAX + a;
+    for (int i = 0; i < size; i++) {
+        mas[i] = static_cast<double>(rand_r())*(b - a + 1) / RAND_MAX + a;
     }
 }
 
