@@ -72,7 +72,7 @@ void PrintArray(double *array, int size) {
     }
 }
 
-void GenerateArray(double *mas, int size, unsigned int* seed) {
+void GenerateArray(double *mas, int size, unsigned int seed) {
     int b = 100;
     int a = 0;
     std::srand(seed);
@@ -117,6 +117,7 @@ int main(int argc, char *argv[]) {
             seed = atoi(argv[3]);
         }
     mas = new double[size];
+<<<<<<< HEAD
     tmpmas = new double[size];
     GenerateArray(mas, size);
 
@@ -126,6 +127,10 @@ int main(int argc, char *argv[]) {
     }
 
     CopyArray(mas, size, tmpmas);
+=======
+
+    GenerateArray(mas, size, seed);
+>>>>>>> fix Travis
     PrintArray(mas, size);
     time_lsd = clock();
     LSDSortDouble(mas, size);
