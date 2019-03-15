@@ -53,6 +53,15 @@ void MSDSortDouble(double *inp, int size) {
     delete[] out;
 }
 
+void MSDSortDouble(double *inp, int size) {
+    double *out = new double[size];
+    for (int i = 7; i >= 0; i -= 2) {
+        CountingSort(inp, out, i, size);
+        CountingSort(out, inp, i - 1, size);
+    }
+    delete[] out;
+}
+
 void CheckingSort(double *mas, int size) {
     for (int i = 0; i < size - 1; i++) {
         if (mas[i] > mas[i + 1]) {
@@ -99,6 +108,7 @@ void CopyArray(double *mas, int size, double *tmpmas) {
 
 int main(int argc, char *argv[]) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     double time_lsd = 0;
     double time_msd = 0;
 =======
@@ -112,6 +122,13 @@ int main(int argc, char *argv[]) {
         if (strcmp(argv[1], "-size") == 0)
 =======
     double *mas;
+=======
+    double time_lsd = 0;
+    double time_msd = 0;
+    int size = 9;
+    std::srand((unsigned)time(NULL));
+    double *mas, *tmpmas;
+>>>>>>> add MSD Sort
     if (argc == 3)
 <<<<<<< HEAD
         if (strcmp(argv[1], "-size") == 0) {
@@ -121,6 +138,7 @@ int main(int argc, char *argv[]) {
 >>>>>>> fix Travis
             size = atoi(argv[2]);
     mas = new double[size];
+<<<<<<< HEAD
 <<<<<<< HEAD
     tmpmas = new double[size];
     GenerateArray(mas, size);
@@ -146,6 +164,24 @@ int main(int argc, char *argv[]) {
     time_msd = clock();
     MSDSortDouble(tmpmas, size);
     time_msd = (clock() - time_msd) / static_cast<double>(CLOCKS_PER_SEC);
+=======
+    tmpmas = new double[size];
+    GenerateArray(mas, size);
+
+    if (mas == NULL) {
+        std::cout << "Error! Incorrect input data for array";
+        return -1;
+    }
+
+    CopyArray(mas, size, tmpmas);
+    PrintArray(mas, size);
+    time_lsd = clock();
+    LSDSortDouble(mas, size);
+    time_lsd = (clock() - time_sort) / static_cast<double>(CLOCKS_PER_SEC);
+    time_msd = clock();
+    MSDSortDouble(tmpmas, size);
+    time_msd = (clock() - time_sort) / static_cast<double>(CLOCKS_PER_SEC);
+>>>>>>> add MSD Sort
     PrintArray(mas, size);
     PrintArray(tmpmas, size);
     std::cout << "LSD ";
