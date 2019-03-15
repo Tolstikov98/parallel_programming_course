@@ -90,8 +90,12 @@ void CopyArray(double *mas, int size, double *tmpmas) {
 }
 
 int main(int argc, char *argv[]) {
+<<<<<<< HEAD
     double time_lsd = 0;
     double time_msd = 0;
+=======
+    double time_sort = 0;
+>>>>>>> fix styles code
     int size = 9;
     std::srand((unsigned)time(NULL));
     double *mas, *tmpmas;
