@@ -63,7 +63,7 @@ void PrintArray(double *array, int size) {
     }
 }
 
-void GenerateArray(double *mas, int size, unsigned int* seed) {
+void GenerateArray(double *mas, int size, unsigned int seed) {
     int b = 100;
     int a = 0;
     std::srand(seed);
@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
         }
     mas = new double[size];
 
-    GenerateArray(mas, size);
+    GenerateArray(mas, size, seed);
     PrintArray(mas, size);
     time_sort = clock();
     LSDSortDouble(mas, size);
