@@ -75,7 +75,6 @@ void PrintArray(double *array, int size) {
 void GenerateArray(double *mas, int size) {
     int b = 100;
     int a = 0;
-    std::srand(seed);
     for (int i = 0; i < size; i++) {
 <<<<<<< HEAD
 <<<<<<< HEAD
