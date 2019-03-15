@@ -72,11 +72,12 @@ void PrintArray(double *array, int size) {
     }
 }
 
-void GenerateArray(double *mas, int size, unsigned int seed) {
+void GenerateArray(double *mas, int size) {
     int b = 100;
     int a = 0;
     std::srand(seed);
     for (int i = 0; i < size; i++) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
@@ -85,6 +86,9 @@ void GenerateArray(double *mas, int size, unsigned int seed) {
 >>>>>>> fix styles code
 =======
         mas[i] = static_cast<double>(rand_r(seed))*(b - a + 1) / RAND_MAX + a;
+>>>>>>> fix Travis
+=======
+        mas[i] = static_cast<double>(std::rand())*(b - a + 1) / RAND_MAX + a;
 >>>>>>> fix Travis
     }
 }
@@ -102,7 +106,6 @@ int main(int argc, char *argv[]) {
     double time_sort = 0;
 >>>>>>> fix styles code
     int size = 9;
-    unsigned int seed = 0;
     std::srand((unsigned)time(NULL));
 <<<<<<< HEAD
     double *mas, *tmpmas;
@@ -110,11 +113,10 @@ int main(int argc, char *argv[]) {
         if (strcmp(argv[1], "-size") == 0)
 =======
     double *mas;
-    if (argc == 4)
+    if (argc == 3)
         if (strcmp(argv[1], "-size") == 0) {
 >>>>>>> fix Travis
             size = atoi(argv[2]);
-            seed = atoi(argv[3]);
         }
     mas = new double[size];
 <<<<<<< HEAD
@@ -129,7 +131,11 @@ int main(int argc, char *argv[]) {
     CopyArray(mas, size, tmpmas);
 =======
 
+<<<<<<< HEAD
     GenerateArray(mas, size, seed);
+>>>>>>> fix Travis
+=======
+    GenerateArray(mas, size);
 >>>>>>> fix Travis
     PrintArray(mas, size);
     time_lsd = clock();
