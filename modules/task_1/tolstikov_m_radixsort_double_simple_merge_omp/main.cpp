@@ -77,9 +77,8 @@ int main(int argc, char *argv[]) {
     std::srand((unsigned)time(NULL));
     double *mas;
     if (argc == 3)
-        if (strcmp(argv[1], "-size") == 0) {
+        if (strcmp(argv[1], "-size") == 0)
             size = atoi(argv[2]);
-        }
     mas = new double[size];
 
     GenerateArray(mas, size);
