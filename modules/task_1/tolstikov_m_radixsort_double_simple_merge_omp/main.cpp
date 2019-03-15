@@ -44,6 +44,15 @@ void LSDSortDouble(double *inp, int size) {
     delete[] out;
 }
 
+void MSDSortDouble(double *inp, int size) {
+    double *out = new double[size];
+    for (int i = 7; i >= 0; i -= 2) {
+        CountingSort(inp, out, i, size);
+        CountingSort(out, inp, i - 1, size);
+    }
+    delete[] out;
+}
+
 void CheckingSort(double *mas, int size) {
     for (int i = 0; i < size - 1; i++) {
         if (mas[i] > mas[i + 1]) {
@@ -71,25 +80,45 @@ void GenerateArray(double *mas, int size) {
     }
 }
 
+void CopyArray(double *mas, int size, double *tmpmas) {
+    for (int i = 0; i < size; i++)
+        tmpmas[i] = mas[i];
+}
+
 int main(int argc, char *argv[]) {
-    double time_sort = 0;
+    double time_lsd = 0;
+    double time_msd = 0;
     int size = 9;
     std::srand((unsigned)time(NULL));
-    double *mas;
+    double *mas, *tmpmas;
     if (argc == 3)
         if (strcmp(argv[1], "-size") == 0)
             size = atoi(argv[2]);
     mas = new double[size];
-
+    tmpmas = new double[size];
     GenerateArray(mas, size);
-    PrintArray(mas, size);
-    time_sort = clock();
-    LSDSortDouble(mas, size);
-    time_sort = (clock() - time_sort) / static_cast<double>(CLOCKS_PER_SEC);
-    PrintArray(mas, size);
-    CheckingSort(mas, size);
 
-    std::cout << "Execution time: " << time_sort << std::endl;
+    if (mas == NULL) {
+        std::cout << "Error! Incorrect input data for array";
+        return -1;
+    }
+
+    CopyArray(mas, size, tmpmas);
+    PrintArray(mas, size);
+    time_lsd = clock();
+    LSDSortDouble(mas, size);
+    time_lsd = (clock() - time_sort) / static_cast<double>(CLOCKS_PER_SEC);
+    time_msd = clock();
+    MSDSortDouble(tmpmas, size);
+    time_msd = (clock() - time_sort) / static_cast<double>(CLOCKS_PER_SEC);
+    PrintArray(mas, size);
+    PrintArray(tmpmas, size);
+    std::cout << "LSD ";
+    CheckingSort(mas, size);
+    std::cout << "MSD ";
+    CheckingSort(tmpmas, size);
+    std::cout << "Execution time LSD sort: " << time_lsd << std::endl;
+    std::cout << "Execution time MSD sort: " << time_msd << std::endl;
 
     delete[] mas;
     return 0;
