@@ -113,10 +113,13 @@ int main(int argc, char *argv[]) {
 =======
     double *mas;
     if (argc == 3)
+<<<<<<< HEAD
         if (strcmp(argv[1], "-size") == 0) {
 >>>>>>> fix Travis
+=======
+        if (strcmp(argv[1], "-size") == 0)
+>>>>>>> fix Travis
             size = atoi(argv[2]);
-        }
     mas = new double[size];
 <<<<<<< HEAD
     tmpmas = new double[size];
