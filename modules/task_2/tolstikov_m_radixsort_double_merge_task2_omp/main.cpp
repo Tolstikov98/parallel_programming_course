@@ -80,14 +80,14 @@ void merge(double* mas, int sizel, int sizer) {
     }
 
     if (i < sizel) {
-        for (i; i < sizel; ++i) {
+        for (; i < sizel; ++i) {
             tempMas[k] = mas[i];
             ++k;
         }
     }
 
     if (j < size) {
-        for (j; j < size; ++j) {
+        for (; j < size; ++j) {
             tempMas[k] = mas[j];
             ++k;
         }
