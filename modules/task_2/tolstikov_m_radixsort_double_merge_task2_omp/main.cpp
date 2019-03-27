@@ -72,8 +72,7 @@ void merge(double* mas, int sizel, int sizer) {
             tempMas[k] = mas[i];
             ++i;
             ++k;
-        }
-        else {
+        } else {
             tempMas[k] = mas[j];
             ++j;
             ++k;
@@ -178,8 +177,7 @@ int main(int argc, char *argv[]) {
     {
         if (omp_get_thread_num() == 0) {
             LSDSortDouble(mas, size / n + tail);
-        }
-        else {
+        } else {
             LSDSortDouble(mas + tail + omp_get_thread_num()*(size / n), size / n);
         }
 #pragma omp barrier
@@ -193,13 +191,11 @@ int main(int argc, char *argv[]) {
         {
             if (omp_get_thread_num() == 0) {
                 merge(mas, (size / n) * j + tail, (size / n) * j);
-            }
-            else {
+            } else {
                 merge(mas + 2 * omp_get_thread_num()*(size / n) * j + tail, (size / n) * j, (size / n) * j);
             }
 #pragma omp barrier
-            if (omp_get_thread_num() == 0)
-            {
+            if (omp_get_thread_num() == 0) {
                 k /= 2;
                 j *= 2;
             }
