@@ -195,7 +195,7 @@ int main(int argc, char *argv[]) {
     tbb::tick_count t5 = tbb::tick_count::now();
     while (k != 0) {
         init.initialize(k);
-        tbb::parallel_for(tbb::blocked_range<int>(0, k), [=, &mas, &size](const tbb::blocked_range<int> &r) {
+        tbb::parallel_for(tbb::blocked_range<int>(0, k), [=, &mas](const tbb::blocked_range<int> &r) {
             for (int f = r.begin(); f != r.end(); f++) {
                 if (f == 0) {
                     merge(mas, grain_size * j + tail, grain_size * j);
