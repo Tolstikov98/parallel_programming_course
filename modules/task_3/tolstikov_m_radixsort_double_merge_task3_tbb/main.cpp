@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
     grain_size = size / n;
     tbb::tick_count t1 = tbb::tick_count::now();
     tbb::tick_count t3 = tbb::tick_count::now();
-    tbb::parallel_for(tbb::blocked_range<int>(0, n),[=, &mas](const tbb::blocked_range<int> &r) {
+    tbb::parallel_for(tbb::blocked_range<int>(0, n), [=, &mas](const tbb::blocked_range<int> &r) {
         for (int f = r.begin(); f != r.end(); f++) {
             if (f == 0) {
                 LSDSortDouble(mas, grain_size + tail);
@@ -229,7 +229,7 @@ int main(int argc, char *argv[]) {
     CheckingSort(mas, tmp, size);
     std::cout << "Execution time LSD sort: " << time_lsd << std::endl;
     std::cout << "Execution time parallel LSD sort: " << time_plsd << std::endl;
-    std::cout << "Execution merge time: " << merge_time << std::endl; 
+    std::cout << "Execution merge time: " << merge_time << std::endl;
     std::cout << "Execution time LSD sort with simple merge: " << ptime_lsd << std::endl;
     std::cout << "Boost is : " << time_lsd / ptime_lsd << std::endl;
     delete[] mas;
