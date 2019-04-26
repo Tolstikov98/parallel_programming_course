@@ -200,8 +200,8 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; ++i) {
         if (i == 0) {
             counts.push_back(size / n + tail);
-        } else { 
-            counts.push_back(size / n); 
+        } else {
+            counts.push_back(size / n);
         }
     }
     if (size < 20) {
