@@ -222,8 +222,6 @@ int main(int argc, char* argv[]) {
     }
     PrintArray(mas, size);
     tbb::task_scheduler_init init(n);
-    int grain_size = 0;
-    grain_size = size / n;
     tbb::tick_count t1 = tbb::tick_count::now();
     tbb::tick_count t3 = tbb::tick_count::now();
     tbb::parallel_for(tbb::blocked_range<int>(0, n), [=, &mas](const tbb::blocked_range<int> &r) {
