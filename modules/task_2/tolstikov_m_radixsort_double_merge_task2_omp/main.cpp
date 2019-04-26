@@ -73,8 +73,7 @@ void merge(double* mas, int sizel, int sizer) {
             tempMas[k] = mas[i];
             ++i;
             ++k;
-        }
-        else {
+        } else {
             tempMas[k] = mas[j];
             ++j;
             ++k;
@@ -195,20 +194,18 @@ int main(int argc, char* argv[]) {
     lmas = new double[size];
     int tail = size % n;
     for (int i = 0; i < n; ++i) {
-        if (i == 0)
+        if (i == 0) {
             counts.push_back(size / n + tail);
-        else counts.push_back(size / n);
+        } else {
+            counts.push_back(size / n);
+        }
     }
-    for (int i = 0; i < n; ++i) {
-        if (i == 0)
-            counts.push_back(size / n + tail);
-        else counts.push_back(size / n);
-    }
-    if (size < 20)
+    if (size < 20) {
         for (int i = 0; i < n; ++i) {
             std::cout << counts[i] << "  ";
         }
-    std::cout << std::endl;
+        std::cout << std::endl;
+    }
     if (size < 20)
         std::cout << "Array: ";
     GenerateArray(mas, size);
@@ -223,7 +220,7 @@ int main(int argc, char* argv[]) {
     ptime_lsd = omp_get_wtime();
     std::cout << "Num threads: " << n << std::endl;
     omp_set_num_threads(n);
-#pragma omp parallel 
+#pragma omp parallel
     {
         LSDSortDouble(mas + displacement_S(counts, omp_get_thread_num()), counts[omp_get_thread_num()]);
 #pragma omp barrier
@@ -232,14 +229,18 @@ int main(int argc, char* argv[]) {
     int k = n / 2 + n % 2;
     while (k > 0) {
         omp_set_num_threads(k);
-#pragma omp parallel 
+#pragma omp parallel
         {
             if (f % 2 == 1) {
                 if (omp_get_thread_num() != k - 1) {
-                    merge(mas + displacement_M(counts, omp_get_thread_num()), counts[2 * omp_get_thread_num()], counts[2 * omp_get_thread_num() + 1]);
+                    merge(mas + displacement_M(counts, omp_get_thread_num()),
+                        counts[2 * omp_get_thread_num()],
+                        counts[2 * omp_get_thread_num() + 1]);
                 }
             } else {
-                merge(mas + displacement_M(counts, omp_get_thread_num()), counts[2 * omp_get_thread_num()], counts[2 * omp_get_thread_num() + 1]);
+                merge(mas + displacement_M(counts, omp_get_thread_num()),
+                    counts[2 * omp_get_thread_num()],
+                    counts[2 * omp_get_thread_num() + 1]);
             }
 #pragma omp barrier
             if (omp_get_thread_num() == 0) {

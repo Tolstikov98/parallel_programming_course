@@ -108,8 +108,7 @@ std::vector<int> merge_size(std::vector<int> counts, int num_th) {
             tmp.push_back(counts[2 * i] + counts[2 * i + 1]);
         }
         tmp.push_back(counts[counts.size() - 1]);
-    }
-    else {
+    } else {
         for (int i = 0; i < num_th / 2; ++i) {
             tmp.push_back(counts[2 * i] + counts[2 * i + 1]);
         }
@@ -179,7 +178,7 @@ void GenerateArray(double *mas, int size) {
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     double time_lsd = 0;
     double ptime_lsd = 0;
     double merge_time = 0;
@@ -188,7 +187,7 @@ int main(int argc, char *argv[]) {
     int size = 10;
     int n = 1;
     std::srand((unsigned)time(NULL));
-    double *mas, *tmp, *lmas;
+    double* mas, * tmp, * lmas;
     if (argc == 4) {
         n = atoi(argv[1]);
         if (strcmp(argv[2], "-size") == 0)
@@ -199,15 +198,18 @@ int main(int argc, char *argv[]) {
     lmas = new double[size];
     int tail = size % n;
     for (int i = 0; i < n; ++i) {
-        if (i == 0)
+        if (i == 0) {
             counts.push_back(size / n + tail);
-        else counts.push_back(size / n);
+        } else { 
+            counts.push_back(size / n); 
+        }
     }
-    if (size < 20)
+    if (size < 20) {
         for (int i = 0; i < n; ++i) {
             std::cout << counts[i] << "  ";
         }
-    std::cout << std::endl;
+        std::cout << std::endl;
+    }
     if (size < 15)
         std::cout << "Array: ";
     GenerateArray(mas, size);
@@ -242,8 +244,7 @@ int main(int argc, char *argv[]) {
                     if (f != k - 1) {
                         merge(mas + displacement_M(counts, f), counts[2 * f], counts[2 * f + 1]);
                     }
-                }
-                else {
+                } else {
                     merge(mas + displacement_M(counts, f), counts[2 * f], counts[2 * f + 1]);
                 }
             }
@@ -251,8 +252,7 @@ int main(int argc, char *argv[]) {
         counts = merge_size(counts, j);
         if (k == 1) {
             k = 0;
-        }
-        else {
+        } else {
             k = k / 2 + k % 2;
         }
         j = j / 2 + j % 2;
